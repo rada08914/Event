@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Event;
 use Redirect;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -22,6 +22,26 @@ class EventController extends Controller
                 '=',
                 $this->request->search
             )->get();
+        }
+        if($this->request->has('date1')){
+            $data = Event::whereBetween('date',[
+                $this->request->date1,
+                $this->request->date2,
+            ])->get();
+
+        }
+        if($this->request->has('number1')){
+            $data = Event::whereBetween('entrance_fee',[
+                $this->request->number1,
+                $this->request->number2,
+            ])->get();
+
+        }
+        if($this->request->has('number1')){
+            $data = Event::where('entrance_fee','>=',$this->request->number1)
+                         ->where('entrance_fee','<=',$this->request->number2)
+                         ->get();
+
         }
 
         return view('index')->with([
