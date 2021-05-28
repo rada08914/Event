@@ -14,8 +14,18 @@ class EventController extends Controller
     }
     public function index(){
 
+        $data= Event::all();
+
+        if($this->request->has('search')){
+            $data = Event::where(
+                $this->request->by,
+                '=',
+                $this->request->search
+            )->get();
+        }
+
         return view('index')->with([
-            'data' => Event::all()
+            'data' => $data
         ]);
     }
     public function create(){

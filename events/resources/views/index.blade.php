@@ -18,6 +18,29 @@
           
           <a href="{{URL::route('create') }}" class="btn btn-success">Create</a>
         </div>
+        <div class="col-12">
+          <form action="">
+              <input type="search" name="search" class="form-controls" required>
+
+              <input type="radio" name="by" value="title" required>Title
+              <input type="radio" name="by" value="location" required>Location  
+              <input type="radio" name="by" value="description" required>Description
+              <button>Search</button>
+          </form>
+          <br>
+          <form action="">
+              <input type="date" name="date1" class="form-controls" required>  
+              <input type="date" name="date2" class="form-controls" required>
+              <button>Search by Date</button>
+          </form>
+          <br>
+          <form action="">
+              <input type="number" name="number1" class="form-controls" required>  
+              <input type="number" name="number2" class="form-controls" required>
+              <button>Search by Price</button>
+          </form>
+    </div>
+    </div>
         <div class="col-12 mt-5">
         <table class="table">
             <thead>
